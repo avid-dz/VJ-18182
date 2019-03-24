@@ -6,19 +6,23 @@ public class Muzicar {
     private String zanr;
     private String webStranica;
     private String biografija;
+    private String slikaZanra;
 
     public Muzicar() {
         imeIPrezime = "";
         zanr = "";
         webStranica = "";
         biografija = "";
+        slikaZanra = "";
     }
 
-    public Muzicar(String imeIPrezime, String zanr, String webStranica, String biografija) {
+    public Muzicar(String imeIPrezime, String zanr, String webStranica, String biografija,
+                   String slikaZanra) {
         this.imeIPrezime = imeIPrezime;
         this.zanr = zanr;
         this.webStranica = webStranica;
         this.biografija = biografija;
+        this.slikaZanra = slikaZanra;
     }
 
     public String getImeIPrezime() {
@@ -51,5 +55,13 @@ public class Muzicar {
 
     public void setBiografija(String biografija) {
         this.biografija = biografija;
+    }
+
+    public String getSlikaZanra() {
+        return slikaZanra;
+    }
+
+    public void setSlikaZanra(String slikaZanra) {
+        this.slikaZanra = slikaZanra;
     }
 }

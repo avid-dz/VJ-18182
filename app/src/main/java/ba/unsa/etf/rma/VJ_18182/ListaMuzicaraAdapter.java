@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class ListaMuzicaraAdapter extends BaseAdapter implements OnClickListener
     private ArrayList lista;
     private static LayoutInflater inflater = null;
     public Resources resources;
-    Muzicar tempValues = null;
+    Muzicar muzicar = null;
     int i = 0;
 
     public ListaMuzicaraAdapter(Activity activity, ArrayList arrayList, Resources resources) {
@@ -51,12 +52,36 @@ public class ListaMuzicaraAdapter extends BaseAdapter implements OnClickListener
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        View vi = convertView;
+        ViewHolder holder;
+        if (convertView == null) {
+            vi = inflater.inflate(R.layout.element_liste, null);
+            holder = new ViewHolder();
+            holder.icon = (ImageView) vi.findViewById(R.id.icon);
+            holder.nazivMuzicara = (TextView) vi.findViewById(R.id.nazivMuzicara);
+            holder.zanr = (TextView) vi.findViewById(R.id.zanr);
+            vi.setTag(holder);
+        }
+        else {
+            holder = (ViewHolder) vi.getTag();
+        }
+        if (lista.size() <= 0) {
+            holder.nazivMuzicara.setText(R.string.no_info);
+        }
+        else {
+            muzicar = (Muzicar) lista.get(position);
+            holder.nazivMuzicara.setText(muzicar.getImeIPrezime());
+            holder.zanr.setText(muzicar.getZanr());
+            holder.icon.setImageResource(resources.getIdentifier
+                    ("ba.unsa.etf.rma.VJ_18182:drawable/" + muzicar.getSlikaZanra(),
+                            null, null));
+        }
+        return vi;
     }
 
     public static class ViewHolder {
-        public String nazivMuzicara;
-        public String zanr;
-        public ImageView slikaZanra;
+        public TextView nazivMuzicara;
+        public TextView zanr;
+        public ImageView icon;
     }
 }
