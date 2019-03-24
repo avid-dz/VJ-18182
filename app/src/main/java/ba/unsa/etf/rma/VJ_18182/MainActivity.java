@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         lista = (ListView) findViewById(R.id.listView);
         final ArrayList<String> unosi = new ArrayList<>();
         adapter = new ArrayAdapter<>
-                (this,  android.R.layout.simple_list_item_1, unosi);
+                (this, R.layout.element_liste, R.id.Itemname, unosi);
         lista.setAdapter(adapter);
         dugme.setOnClickListener(new View.OnClickListener() {
             @Override
