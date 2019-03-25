@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 "www.nedeljkobajicbaja.com",
                 "Nedeljko Bajić Baja (9. juni 1968. Šipovo, Jugoslavija) je srbijanski " +
                         "pop-folk pjevač porijeklom iz Bosne i Hercegovine. ", "folk1"));
-        listaMuzicara.add(new Muzicar("Zeljko Vasić", "Pop",
+        listaMuzicara.add(new Muzicar("Željko Vasić", "Pop",
                 "zeljkovasic.com", "Željko Vasić (rođen je 10. decembra 1979. " +
                 "godine u Zaječaru) je srpski pop pevač, kompozitor i tekstopisac.", "pop1"));
         listaMuzicara.add(new Muzicar("Mladen Vojičić Tifa", "Rock", "",
@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 "(Sarajevo 17. listopada 1960.) bosanskohercegovački je rock pjevač. " +
                 "Postao je poznat diljem Jugoslavije po svom kratkotrajnom boravku na mjestu pjevača " +
                 "Bijelog dugmeta polovinom 1980-ih. Osim što je bio u Bijelom dugmetu, pjevao je u brojnim sastavima " +
-                "s različitim stupnjevima uspješnosti " +
-                "(Teška industrija, Vatreni poljubac i Divlje jagode). Danas, Tifa vodi solo karijeru.", "rock1"));
+                "s različitim stupnjevima uspješnosti (Teška industrija, Vatreni poljubac i Divlje jagode). " +
+                        "Danas, Tifa vodi solo karijeru.", "rock1"));
 
     }
 }
