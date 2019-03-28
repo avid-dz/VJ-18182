@@ -23,9 +23,13 @@ public class PrikazDetaljaOMuzicaruActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalji_o_muzicaru);
         textViewNazivMuzicara = (TextView) findViewById(R.id.detaljiNazivMuzicara);
+        textViewNazivMuzicara.setText(getIntent().getStringExtra("imeIPrezimeMuzicara"));
         textViewZanrMuzicara = (TextView) findViewById(R.id.detaljiZanrMuzicara);
+        textViewZanrMuzicara.setText(getIntent().getStringExtra("zanrMuzicara"));
         textViewWebStranicaMuzicara = (TextView) findViewById(R.id.detaljiWebStranicaMuzicara);
+        textViewWebStranicaMuzicara.setText(getIntent().getStringExtra("webStranicaMuzicara"));
         textViewBiografijaMuzicara = (TextView) findViewById(R.id.detaljiBiografijaMuzicara);
+        textViewBiografijaMuzicara.setText(getIntent().getStringExtra("biografijaMuzicara"));
         listaTop5Pjesama = (ListView) findViewById(R.id.detaljiTop5PjesamaMuzicara);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pjesme);
         listaTop5Pjesama.setAdapter(adapter);
