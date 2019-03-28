@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void napuniListu() {
         ArrayList<String> listaTop5Pjesama0 = new ArrayList<>();
+        listaTop5Pjesama0.add("Oficir s ruzom");
         listaTop5Pjesama0.add("Stare slike");
         listaTop5Pjesama0.add("Večita igra ljubavi");
         listaTop5Pjesama0.add("Rođen spreman");
-        listaTop5Pjesama0.add("");
         listaTop5Pjesama0.add("");
         /*listaMuzicara.add(new Muzicar("Nedeljko Bajić Baja", "Folk",
                 "www.nedeljkobajicbaja.com",
