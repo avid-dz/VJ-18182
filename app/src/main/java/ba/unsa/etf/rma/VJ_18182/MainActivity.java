@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         listaTop5Pjesama0.add("Stare slike");
         listaTop5Pjesama0.add("Večita igra ljubavi");
         listaTop5Pjesama0.add("Rođen spreman");
-        listaTop5Pjesama0.add("");
+        listaTop5Pjesama0.add("Dukat srca");
         /*listaMuzicara.add(new Muzicar("Nedeljko Bajić Baja", "Folk",
                 "www.nedeljkobajicbaja.com",
                 "Nedeljko Bajić Baja (9. juni 1968. Šipovo, Jugoslavija) je srbijanski " +
