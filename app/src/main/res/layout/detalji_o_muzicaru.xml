@@ -45,7 +45,9 @@
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
         android:paddingBottom="3dp"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:text="@string/top_5_pjesama_naslov" />
 
     <ListView
         android:id="@+id/detaljiTop5PjesamaMuzicara"

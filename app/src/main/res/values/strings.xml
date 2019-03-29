@@ -2,4 +2,5 @@
     <string name="app_name">VJ-18182</string>
     <string name="opis_slike">Žanr</string>
     <string name="no_info">(nema informacija)</string>
+    <string name="top_5_pjesama_naslov">Top 5 pjesama:</string>
 </resources>

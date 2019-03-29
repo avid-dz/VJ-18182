@@ -30,8 +30,9 @@ public class PrikazDetaljaOMuzicaruActivity extends AppCompatActivity {
         textViewWebStranicaMuzicara.setText(getIntent().getStringExtra("webStranicaMuzicara"));
         textViewBiografijaMuzicara = (TextView) findViewById(R.id.detaljiBiografijaMuzicara);
         textViewBiografijaMuzicara.setText(getIntent().getStringExtra("biografijaMuzicara"));
-        /*listaTop5Pjesama = (ListView) findViewById(R.id.detaljiTop5PjesamaMuzicara);
+        listaTop5Pjesama = (ListView) findViewById(R.id.detaljiTop5PjesamaMuzicara);
+        pjesme = getIntent().getStringArrayListExtra("top5PjesamaMuzicara");
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pjesme);
-        listaTop5Pjesama.setAdapter(adapter);*/
+        listaTop5Pjesama.setAdapter(adapter);
     }
 }

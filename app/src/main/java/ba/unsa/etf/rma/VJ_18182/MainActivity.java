@@ -31,14 +31,6 @@ public class MainActivity extends AppCompatActivity {
         Resources resources = getResources();
         adapter = new ListaMuzicaraAdapter(this, listaMuzicara, resources);
         lista.setAdapter(adapter);
-        /*dugme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                unosi.add(0, tekst.getText().toString());
-                adapter.notifyDataSetChanged();
-                tekst.setText("");
-            }
-        });*/
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -47,9 +39,18 @@ public class MainActivity extends AppCompatActivity {
                 mojIntent.putExtra("zanrMuzicara", listaMuzicara.get(position).getZanr());
                 mojIntent.putExtra("biografijaMuzicara", listaMuzicara.get(position).getBiografija());
                 mojIntent.putExtra("webStranicaMuzicara", listaMuzicara.get(position).getWebStranica());
+                mojIntent.putStringArrayListExtra("top5PjesamaMuzicara", listaMuzicara.get(position).getListaTop5Pjesama());
                 MainActivity.this.startActivity(mojIntent);
             }
         });
+        /*dugme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                unosi.add(0, tekst.getText().toString());
+                adapter.notifyDataSetChanged();
+                tekst.setText("");
+            }
+        });*/
     }
 
     private void napuniListu() {
@@ -63,16 +64,28 @@ public class MainActivity extends AppCompatActivity {
                 "www.nedeljkobajicbaja.com",
                 "Nedeljko Bajić Baja (9. juni 1968. Šipovo, Jugoslavija) je srbijanski " +
                         "pop-folk pjevač porijeklom iz Bosne i Hercegovine. ", "folk1", listaTop5Pjesama0));
+        ArrayList<String> listaTop5Pjesama1 = new ArrayList<>();
+        listaTop5Pjesama1.add("Nema nikoga dugo");
+        listaTop5Pjesama1.add("Zauvek");
+        listaTop5Pjesama1.add("Voli me i ne voli");
+        listaTop5Pjesama1.add("Najmanje");
+        listaTop5Pjesama1.add("Lozinka za raj");
         listaMuzicara.add(new Muzicar("Željko Vasić", "Pop",
                 "zeljkovasic.com", "Željko Vasić (rođen je 10. decembra 1979. " +
-                "godine u Zaječaru) je srpski pop pevač, kompozitor i tekstopisac.", "pop1", listaTop5Pjesama0));
+                "godine u Zaječaru) je srpski pop pevač, kompozitor i tekstopisac.", "pop1", listaTop5Pjesama1));
+        ArrayList<String> listaTop5Pjesama2 = new ArrayList<>();
+        listaTop5Pjesama2.add("Baraba");
+        listaTop5Pjesama2.add("Duge kiše jesenje");
+        listaTop5Pjesama2.add("21. vijek");
+        listaTop5Pjesama2.add("Stari");
+        listaTop5Pjesama2.add("Grbavica");
         listaMuzicara.add(new Muzicar("Mladen Vojičić Tifa", "Rock", "",
                 "Mladen Vojičić, poznatiji po svom nadimku Tifa, " +
                 "(Sarajevo 17. listopada 1960.) bosanskohercegovački je rock pjevač. " +
                 "Postao je poznat diljem Jugoslavije po svom kratkotrajnom boravku na mjestu pjevača " +
                 "Bijelog dugmeta polovinom 1980-ih. Osim što je bio u Bijelom dugmetu, pjevao je u brojnim sastavima " +
                 "s različitim stupnjevima uspješnosti (Teška industrija, Vatreni poljubac i Divlje jagode). " +
-                        "Danas, Tifa vodi solo karijeru.", "rock1", listaTop5Pjesama0));
+                        "Danas, Tifa vodi solo karijeru.", "rock1", listaTop5Pjesama2));
 
     }
 }
