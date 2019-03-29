@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListaMuzicaraAdapter extends BaseAdapter implements OnClickListener {
+public class ListaMuzicaraAdapter extends BaseAdapter {
 
     private Activity activity;
     private ArrayList lista;
@@ -27,11 +26,6 @@ public class ListaMuzicaraAdapter extends BaseAdapter implements OnClickListener
         this.lista = arrayList;
         this.resources = resources;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 
     @Override
@@ -67,8 +61,10 @@ public class ListaMuzicaraAdapter extends BaseAdapter implements OnClickListener
         }
         if (lista.size() <= 0) {
             holder.nazivMuzicara.setText(R.string.no_info);
+            holder.zanr.setText(R.string.no_info);
         }
         else {
+            muzicar = null;
             muzicar = (Muzicar) lista.get(position);
             holder.nazivMuzicara.setText(muzicar.getImeIPrezime());
             holder.zanr.setText(muzicar.getZanr());
