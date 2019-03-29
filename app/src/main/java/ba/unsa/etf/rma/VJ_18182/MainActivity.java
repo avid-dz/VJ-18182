@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         listaTop5Pjesama0.add("Rođen spreman");
         listaTop5Pjesama0.add("Dukat srca");
         listaMuzicara.add(new Muzicar("Nedeljko Bajić Baja", "Folk",
-                "www.nedeljkobajicbaja.com",
+                "http://www.nedeljkobajicbaja.com",
                 "Nedeljko Bajić Baja (9. juni 1968. Šipovo, Jugoslavija) je srbijanski " +
                         "pop-folk pjevač porijeklom iz Bosne i Hercegovine. ", "folk1", listaTop5Pjesama0));
         ArrayList<String> listaTop5Pjesama1 = new ArrayList<>();
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         listaTop5Pjesama1.add("Najmanje");
         listaTop5Pjesama1.add("Lozinka za raj");
         listaMuzicara.add(new Muzicar("Željko Vasić", "Pop",
-                "zeljkovasic.com", "Željko Vasić (rođen je 10. decembra 1979. " +
+                "http://www.zeljkovasic.com", "Željko Vasić (rođen je 10. decembra 1979. " +
                 "godine u Zaječaru) je srpski pop pevač, kompozitor i tekstopisac.", "pop1", listaTop5Pjesama1));
         ArrayList<String> listaTop5Pjesama2 = new ArrayList<>();
         listaTop5Pjesama2.add("Baraba");
@@ -79,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
         listaTop5Pjesama2.add("21. vijek");
         listaTop5Pjesama2.add("Stari");
         listaTop5Pjesama2.add("Grbavica");
-        listaMuzicara.add(new Muzicar("Mladen Vojičić Tifa", "Rock", "",
+        listaMuzicara.add(new Muzicar("Mladen Vojičić Tifa", "Rock",
+                "https://bs.wikipedia.org/wiki/Mladen_Vojičić_Tifa",
                 "Mladen Vojičić, poznatiji po svom nadimku Tifa, " +
                 "(Sarajevo 17. listopada 1960.) bosanskohercegovački je rock pjevač. " +
                 "Postao je poznat diljem Jugoslavije po svom kratkotrajnom boravku na mjestu pjevača " +

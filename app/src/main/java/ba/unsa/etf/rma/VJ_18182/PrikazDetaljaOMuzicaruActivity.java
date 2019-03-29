@@ -1,7 +1,10 @@
 package ba.unsa.etf.rma.VJ_18182;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,5 +37,18 @@ public class PrikazDetaljaOMuzicaruActivity extends AppCompatActivity {
         pjesme = getIntent().getStringArrayListExtra("top5PjesamaMuzicara");
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pjesme);
         listaTop5Pjesama.setAdapter(adapter);
+        postaviListenerNaLink();
+    }
+
+    private void postaviListenerNaLink() {
+        textViewWebStranicaMuzicara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(getIntent().getStringExtra("webStranicaMuzicara")));
+                if (intent.resolveActivity(getPackageManager()) != null)
+                    startActivity(intent);
+            }
+        });
     }
 }
