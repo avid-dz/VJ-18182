@@ -3,4 +3,7 @@
     <string name="opis_slike">Žanr</string>
     <string name="no_info">(nema informacija)</string>
     <string name="top_5_pjesama_naslov">Top 5 pjesama:</string>
+    <string name="dugme_podijeli_biografiju">PODIJELI BIOGRAFIJU</string>
+    <string name="dugme_pretraga">PRETRAGA</string>
+    <string name="chooser_naslov_podijeli_biografiju">Podijeli biografiju</string>
 </resources>

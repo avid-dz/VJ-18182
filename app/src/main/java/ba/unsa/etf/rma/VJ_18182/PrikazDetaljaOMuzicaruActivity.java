@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class PrikazDetaljaOMuzicaruActivity extends AppCompatActivity {
     private TextView textViewWebStranicaMuzicara;
     private TextView textViewBiografijaMuzicara;
     private ListView listaTop5Pjesama;
+    private Button dugmePodijeliBiografiju;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> pjesme = null;
 
@@ -34,12 +36,14 @@ public class PrikazDetaljaOMuzicaruActivity extends AppCompatActivity {
         textViewWebStranicaMuzicara.setText(getIntent().getStringExtra("webStranicaMuzicara"));
         textViewBiografijaMuzicara = (TextView) findViewById(R.id.detaljiBiografijaMuzicara);
         textViewBiografijaMuzicara.setText(getIntent().getStringExtra("biografijaMuzicara"));
+        dugmePodijeliBiografiju = (Button) findViewById(R.id.detaljiPodijeliBiografiju);
         listaTop5Pjesama = (ListView) findViewById(R.id.detaljiTop5PjesamaMuzicara);
         pjesme = getIntent().getStringArrayListExtra("top5PjesamaMuzicara");
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pjesme);
         listaTop5Pjesama.setAdapter(adapter);
         postaviListenerNaLink();
         postaviListenerNaPjesmu();
+        postaviListenerNaDugme();
     }
 
     private void postaviListenerNaLink() {
@@ -69,6 +73,20 @@ public class PrikazDetaljaOMuzicaruActivity extends AppCompatActivity {
                 mojIntent.setPackage("com.google.android.youtube");
                 if (mojIntent.resolveActivity(getPackageManager()) != null)
                     startActivity(mojIntent);
+            }
+        });
+    }
+
+    private void postaviListenerNaDugme() {
+        dugmePodijeliBiografiju.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mojIntent = new Intent(Intent.ACTION_SEND);
+                mojIntent.setType("text/plain");
+                mojIntent.putExtra(Intent.EXTRA_SUBJECT, "Biografija");
+                mojIntent.putExtra(Intent.EXTRA_TEXT, getIntent().getStringExtra("biografijaMuzicara"));
+                startActivity(Intent.createChooser(mojIntent,
+                        getResources().getString(R.string.chooser_naslov_podijeli_biografiju)));
             }
         });
     }
