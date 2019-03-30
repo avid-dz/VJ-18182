@@ -6,4 +6,6 @@
     <string name="dugme_podijeli_biografiju">PODIJELI BIOGRAFIJU</string>
     <string name="dugme_pretraga">PRETRAGA</string>
     <string name="chooser_naslov_podijeli_biografiju">Podijeli biografiju</string>
+    <string name="toast_nema_konekcije">Nema konekcije!</string>
+    <string name="chooser_otvaranje_linka">Otvaranje web stranice muzičara</string>
 </resources>

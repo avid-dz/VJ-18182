@@ -52,8 +52,8 @@ public class PrikazDetaljaOMuzicaruActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(getIntent().getStringExtra("webStranicaMuzicara")));
-                if (intent.resolveActivity(getPackageManager()) != null)
-                    startActivity(intent);
+                startActivity(Intent.createChooser(intent,
+                        getResources().getString(R.string.chooser_otvaranje_linka)));
             }
         });
     }

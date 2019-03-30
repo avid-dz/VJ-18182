@@ -1,7 +1,10 @@
 package ba.unsa.etf.rma.VJ_18182;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView lista;
     private ListaMuzicaraAdapter adapter;
     private ArrayList<Muzicar> listaMuzicara = new ArrayList<>();
+    private BroadcastReceiver broadcastReceiver = new MojBroadcastReceiver();
+    private IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,26 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Resources resources = getResources();
         adapter = new ListaMuzicaraAdapter(this, listaMuzicara, resources);
         lista.setAdapter(adapter);
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent mojIntent = new Intent(MainActivity.this, PrikazDetaljaOMuzicaruActivity.class);
-                mojIntent.putExtra("imeIPrezimeMuzicara", listaMuzicara.get(position).getImeIPrezime());
-                mojIntent.putExtra("zanrMuzicara", listaMuzicara.get(position).getZanr());
-                mojIntent.putExtra("biografijaMuzicara", listaMuzicara.get(position).getBiografija());
-                mojIntent.putExtra("webStranicaMuzicara", listaMuzicara.get(position).getWebStranica());
-                mojIntent.putStringArrayListExtra("top5PjesamaMuzicara", listaMuzicara.get(position).getListaTop5Pjesama());
-                MainActivity.this.startActivity(mojIntent);
-            }
-        });
-        /*dugme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                unosi.add(0, tekst.getText().toString());
-                adapter.notifyDataSetChanged();
-                tekst.setText("");
-            }
-        });*/
+        postaviListenerNaMuzicara();
     }
 
     private void napuniListu() {
@@ -88,5 +74,33 @@ public class MainActivity extends AppCompatActivity {
                 "s različitim stupnjevima uspješnosti (Teška industrija, Vatreni poljubac i Divlje jagode). " +
                         "Danas, Tifa vodi solo karijeru.", "rock1", listaTop5Pjesama2));
 
+    }
+
+    private void postaviListenerNaMuzicara() {
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent mojIntent = new Intent(MainActivity.this, PrikazDetaljaOMuzicaruActivity.class);
+                mojIntent.putExtra("imeIPrezimeMuzicara", listaMuzicara.get(position).getImeIPrezime());
+                mojIntent.putExtra("zanrMuzicara", listaMuzicara.get(position).getZanr());
+                mojIntent.putExtra("biografijaMuzicara", listaMuzicara.get(position).getBiografija());
+                mojIntent.putExtra("webStranicaMuzicara", listaMuzicara.get(position).getWebStranica());
+                mojIntent.putStringArrayListExtra("top5PjesamaMuzicara",
+                        listaMuzicara.get(position).getListaTop5Pjesama());
+                MainActivity.this.startActivity(mojIntent);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(broadcastReceiver, intentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        unregisterReceiver(broadcastReceiver);
+        super.onPause();
     }
 }
