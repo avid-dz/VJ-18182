@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ public class PrikazDetaljaOMuzicaruActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, pjesme);
         listaTop5Pjesama.setAdapter(adapter);
         postaviListenerNaLink();
+        postaviListenerNaPjesmu();
     }
 
     private void postaviListenerNaLink() {
@@ -48,6 +50,25 @@ public class PrikazDetaljaOMuzicaruActivity extends AppCompatActivity {
                 intent.setData(Uri.parse(getIntent().getStringExtra("webStranicaMuzicara")));
                 if (intent.resolveActivity(getPackageManager()) != null)
                     startActivity(intent);
+            }
+        });
+    }
+
+    private void postaviListenerNaPjesmu() {
+        listaTop5Pjesama.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent mojIntent = new Intent(Intent.ACTION_VIEW);
+                String[] imeIPrezimeRazdvojeni =
+                        getIntent().getStringExtra("imeIPrezimeMuzicara").split(" ");
+                String imeMuzicara = imeIPrezimeRazdvojeni[0];
+                String prezimeMuzicara = imeIPrezimeRazdvojeni[1];
+                String nazivPjesme = pjesme.get(position);
+                mojIntent.setData(Uri.parse("https://www.youtube.com/results?search_query="
+                        + imeMuzicara + "+" + prezimeMuzicara + "+" + nazivPjesme));
+                mojIntent.setPackage("com.google.android.youtube");
+                if (mojIntent.resolveActivity(getPackageManager()) != null)
+                    startActivity(mojIntent);
             }
         });
     }
